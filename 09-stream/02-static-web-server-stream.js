@@ -1,6 +1,4 @@
-#!/usr/bin/node
-var stdin=process.stdin;
-var stdout =process.stdout;
+#!/usr/bin/node
 var fs =require('fs');
 
 const http = require('http');
@@ -11,4 +9,4 @@ http.createServer((req,res)=>{
       fs.createReadStream(filename).pipe(res);
 }).listen(8080);
 
-consoel.log(process.pid);
+console.log(process.pid);

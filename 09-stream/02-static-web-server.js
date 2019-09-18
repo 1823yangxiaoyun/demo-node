@@ -1,15 +1,26 @@
 #!/usr/bin/node
-var stdin=process.stdin;
-var stdout=process.stdout;
 var fs=require('fs');
 
 const http = require('http');
-     
+  
+http.createServer((req, res) => {
+    log('==========');
+      log(req.headers);
 
-http.createServer((req,res)=>{
-  if(req.url === '/favicon.ico') return;
-      var filename =__dirname+req.url;
-      res.end(fs.readFileSync(filename).toString('utf8'));
-    }).listen(8080)
+        var file = __dirname + req.url;
+        fs.readFile(file, (err, data) => {
+          if(err) {
+                  log(err.message);
+                        res.statusCode = 404;
+                              res.end(err.message);
+                                  
+          } else {
+                  res.end(data);
+                      
+          }
+            
+        });
+
+}).listen(8080);
 
 console.log(process.pid);

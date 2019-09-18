@@ -7,7 +7,8 @@ function MyReadable(){
 
     Read.call(this);
     var c ='a'.charCodeAt(0);
-}
+};
+MyReadable.prototype=Read.prototype;
 
 MyReadable
     this._read=(){
@@ -15,9 +16,6 @@ MyReadable
     }
 
 
-MyReadable.prototype =Read.prototype;
-
-module.exports =MyReadable;
 
 
 module.exports=MyReadable;
